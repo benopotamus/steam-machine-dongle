@@ -31,6 +31,7 @@ Uncomment (remove #'s) from the automatic log in section and make sure it is ena
 	AutomaticLoginEnable = true
 	AutomaticLogin = your user name here
 	
+_Note: there's a bug in GDM 3.8 that _can_ prevent auto log in's from working_
 
 ### 2. .steambox.sh setup ###
 
@@ -84,7 +85,7 @@ __steam-machine__
 	XSession=gnome-fallback
 	SystemAccount=false
 
-gnome-fallback is Gnome 3 without the fancyness.
+gnome-fallback is Gnome 3 without the fancyness
 
 
 Edit steambox_dongle to use your dongle's UUID and your user name
@@ -98,7 +99,7 @@ Make steambox_dongle executable, move it to the init.d (start up script) directo
 
 
 
-### Grub set up ###
+### 4. Grub set up ###
 
 If you're using Grub as your boot loader and would like it to boot a bit quicker, you can reduce the amount of time it waits for user input
 
@@ -118,4 +119,4 @@ If there's demand for it...
 * Remove reliance on GDM3 for auto log ins
 * Cater for non-Debian based distros
 * Create an installation script/program to present the user with just the options they need to choose (e.g. a list of PulseAudio sinks to choose from), and automate the file editing process.
-* Package above script as DEB, RPM, etc.
+* Package above script/program as DEB, RPM, etc.
