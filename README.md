@@ -1,24 +1,24 @@
 steam-machine-dongle
-********************
+=====================
 
 Scripts and instructions for booting a Linux PC into Steam Big Picture mode using a dongle - and no keyboard.
 
-** How it works **
+## How it works ##
 
 As couches aren't for keyboards, we need a way to tell the computer to launch Steam Big Picture mode. This can be done by inserting a USB drive before turning the computer on, and the system detects the presence of the drive and configures itself accordingly.
 
-*.steambox.sh* is run when you log into your window manager. It switches the audio output and launches Steam
+__.steambox.sh__ is run when you log into your window manager. It switches the audio output and launches Steam
 
-*steambox_dongle* (optional) is run on system startup (as root) and switches default window managers 
+__steambox_dongle__ (optional) is run on system startup (as root) and switches default window managers 
 
 The end result is we can insert a USB drive, turn the computer on, and the next thing we know we're in Steam Big Picture mode and using a gamepad to launch and play games!
 
 
-** Installation **
+## Installation ##
 
 You will need a USB drive. It can have data on it. The scripts just rely on the presence of the drive, not the data on it itself. Focal price has some interesting ones: [http://search.focalprice.com/search?keyword=usb+drive&categoryid=]
 
-*** 1. Auto log in with GDM ***
+### 1. Auto log in with GDM ###
 
 Keyboards are required for manual log ins, and we don't like keyboards on couches, so we'll enable auto log in.
 
@@ -32,7 +32,7 @@ Uncomment (remove #'s) from the automatic log in section and make sure it is ena
 	AutomaticLogin = your user name here
 	
 
-*** 2. .steambox.sh setup ***
+### 2. .steambox.sh setup ###
 
 Insert the USB drive and get its UUID (block id)
 
@@ -52,7 +52,7 @@ The names should be a giveaway. Put the sink indexes in .steambox.sh, make it ex
 Add .steambox.sh to the list of startup applications in your window manager and the main part is done!
 
 
-*** 3. (optional) steambox_dongle setup  ***
+### 3. (optional) steambox_dongle setup  ###
 
 Some window managers aren't optimal for Steam Big Picture with just a controller. E.g. Gnome 3 will display a pop-up over the top of Steam when it detects the USB dongle - not optimal. This script resolves this by configuring the window manager preference based on dongle presence. 
 
@@ -69,7 +69,7 @@ You will need to manually edit these files
 
 The XSession variable is the important one. My preference files look like:
 
-*default*
+__default__
 
 	[User]
 	Language=
@@ -77,7 +77,7 @@ The XSession variable is the important one. My preference files look like:
 	SystemAccount=false
 	
 	
-*steam-machine*
+__steam-machine__
 
 	[User]
 	Language=
@@ -98,7 +98,7 @@ Make steambox_dongle executable, move it to the init.d (start up script) directo
 
 
 
-*** Grub set up ***
+### Grub set up ###
 
 If you're using Grub as your boot loader and would like it to boot a bit quicker, you can reduce the amount of time it waits for user input
 
@@ -111,7 +111,7 @@ And run update
 	sudo update-grub
 
 
-** TODO **
+## TODO ##
 
 If there's demand for it...
 
