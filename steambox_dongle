@@ -1,0 +1,51 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          steam_machine_dongle
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2
+# Default-Stop:      0 1 6
+# Short-Description: Start computer as a Steam Machine when a dongle is inserted
+# Description:       .
+### END INIT INFO
+
+DONGLE_BLKID=Dongle blockid here
+USER=Your username here
+
+case "$1" in
+
+start)
+
+	if [ -e /dev/disk/by-uuid/$DONGLE_BLKID ]
+	then
+		cp /var/lib/AccountsService/users/$USER.steam-machine /var/lib/AccountsService/users/$USER
+	fi
+
+;;
+
+stop)
+
+	cp /var/lib/AccountsService/users/$USER.default /var/lib/AccountsService/users/$USER
+
+;;
+
+reload|restart|force-reload)
+
+	if [ -e /dev/disk/by-uuid/$DONGLE_BLKID ]
+	then
+		cp /var/lib/AccountsService/users/$USER.steam-machine /var/lib/AccountsService/users/$USER
+	fi
+
+;;
+
+*)
+
+echo "Usage: [this] {start|stop|restart|reload|force-reload}" >&2
+
+exit 1
+
+;;
+
+esac
+
+exit 0
