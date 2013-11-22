@@ -16,24 +16,24 @@ case "$1" in
 
 start)
 
-	if [ -e /dev/disk/by-uuid/$DONGLE_BLKID ]
+	if [ -e /dev/disk/by-uuid/${DONGLE_BLKID} ]
 	then
-		cp /var/lib/AccountsService/users/$USER.steam-machine /var/lib/AccountsService/users/$USER
+		cp /var/lib/AccountsService/users/${USER}.steam-machine /var/lib/AccountsService/users/${USER}
 	fi
 
 ;;
 
 stop)
 
-	cp /var/lib/AccountsService/users/$USER.default /var/lib/AccountsService/users/$USER
+	cp /var/lib/AccountsService/users/${USER}.default /var/lib/AccountsService/users/${USER}
 
 ;;
 
 reload|restart|force-reload)
 
-	if [ -e /dev/disk/by-uuid/$DONGLE_BLKID ]
+	if [ -e /dev/disk/by-uuid/${DONGLE_BLKID} ]
 	then
-		cp /var/lib/AccountsService/users/$USER.steam-machine /var/lib/AccountsService/users/$USER
+		cp /var/lib/AccountsService/users/${USER}.steam-machine /var/lib/AccountsService/users/${USER}
 	fi
 
 ;;
